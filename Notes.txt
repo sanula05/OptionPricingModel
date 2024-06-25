@@ -1,0 +1,39 @@
+Binomial Tree model
+
+Reqirements: Create two underlying functions(one for call and one for put options)
+that calculate the price of the option using the binomial tree model.
+
+Notes from reaserch: 
+Arbitage - risk free profit(type 1 and 2).
+type 1: zero invesment and chance to gain profit
+ value_0 = 0 , P(value_t >= 0) = 1 , P(value_t > 0) > 0 
+type 2: recive credint and have no risk of loss
+ value_0 < 0 , P(value_t >= 0) = 1 , 
+Law of one price -> for two profolios (A,B), P(V_A = V_B) = 1 Then V_A_0 = V_B_0
+One period binomial model :
+  S_0 = Stock price at T = 0
+  B = risk free bank account, B_0 = 1 , 
+  Two factors S_up(u) and S_down(d),u & d influence volatility.
+  S_up = u * S_0 & S_down = d * S_0 , The time step of T = 1  
+  B_up , B_down = B_t, where B_t = e^rt
+  Take financial derivative(C), we are trying to find the option price of C_0
+  We know that C_up = max(0,S_up - K) and C_down = max(0,S_down - K), Where K is the strike price.
+  Using the law of one price P([value of stock and bank account at time = T] = [Call Price at time = T]) = 1
+  Therefore the inital value of the stock and the bank account at time t = 0 is equal to call value at time t = 0
+  (V_0 = C_0)
+  The static portfolio V_t is comprised of x amouts of stock and y amounts of bank account
+  (V_t = x * S_t + y * B_t)
+  therefore can be discribed as vector V_t = [x,y] * [S_t , B_t]
+  The simultaneous equations from consideering the start point and the ends points of this model
+  -> [C_0 = x * S_0 + y * B_0] , [C_up = x * (S_up) + y * (e^rt)] , [C_down = x * (S_down) + y * (e^rt)] 
+  Combining the two equations: (C_up - C_down) = x * (S_up - S_down) -> (C_up - C_down)/(S_up - S_down) = x
+  Sub back into C_up: y = e^-rT ( C_up - x * S_up) 
+  Sub into C_0 : as B_0 = 1 and taking q = (S_0 * e^rt - S_down)/(S_up - S_down) , 0 < q < 1
+  -> C_0 = e^-rT * [q * C_up + (1-q)C_down ]
+  No arbitrage conditions: 0 < d < 1 + r < u
+Multi-period Binomial model:
+  
+
+# Monte-Carlo simulation
+
+# Black-Scholes-Merton model
