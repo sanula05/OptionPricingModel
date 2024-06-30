@@ -42,7 +42,7 @@ Multi-period Binomial model:
       dS
   use it as a graph with each vertex being step
   use vector as par of the implementation where "i" represents the time step and "j" being nodes from bottom to the top
-  genaral formula for stock price interms of i and j: S_(i,j) = S_0 * u^i * d^(i-j)
+  genaral formula for stock price interms of i and j: S_(i,j) = S_0 * u^j * d^(i-j)
   find the final condition and wok backward to find C_0
   
 
