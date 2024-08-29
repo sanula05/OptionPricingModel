@@ -32,6 +32,18 @@ class option_pricing_model:
 
 
 # Monte-Carlo simulation:
+def Monte_Carlo(S_0, K, T, r, N, sigma, type, no):
+   np.ranon.seed(42)
+   dt = T/N
+   S_t = S_0*np.exp((r-o.5*sigma**2)*dt+sigma*np.sqrt(dt)*np.random.randn(no))
+
+   if type == "Call":
+      payoff = np.maximum(S_t - K, 0)
+   elif type == "Put":
+      payoff = np.maximum(K - S_t, 0)
+   price = np.exp(-r *T) *  np.mean(payoff)
+   return(price)
+
 #Cox-Ross-Rubinstein Model:
 
 
@@ -46,4 +58,4 @@ def black_scholes_pricing(S_0,K,T,r,N,sigma,type):
 
   return(price_0)
 
-print(black_scholes_pricing(100,100,1,0.05,100,0.2,"Call"))
+print(black_scholes_pricing(100,100,1,0.05,100,0.2,"Put"))
