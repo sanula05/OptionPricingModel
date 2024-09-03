@@ -33,7 +33,7 @@ class option_pricing_model:
 
 # Monte-Carlo simulation:
 def Monte_Carlo(S_0, K, T, r, N, sigma, type, no):
-   np.ranon.seed(42)
+   np.random.seed(42)
    dt = T/N
    S_t = S_0*np.exp((r-o.5*sigma**2)*dt+sigma*np.sqrt(dt)*np.random.randn(no))
 
